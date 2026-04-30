@@ -9,6 +9,7 @@ Annual Fraud Losses
 0.32%
 Fraud Loss Rate
 1. Who Is NexaBank (hypothetical name)?
+
 NexaBank is a mid-sized national retail and commercial bank founded in Charlotte, North Carolina
 in 1987. What started as a community savings institution has grown, through decades of careful
 expansion and a handful of strategic acquisitions, into one of the top 30 banks in the United States.
@@ -22,25 +23,31 @@ NexaBank is not a technology laggard. It has a functioning mainframe core, a cap
 processing setup, and a seasoned fraud operations team of 250 people. But it was built for a
 different era. Its fraud detection engine — FIS Falcon, deployed in 2014 — was designed around
 static rules and batch processing. In 2014, that was enough. In 2025, it is not.
+
 2. The Problem
+
 In January 2025, NexaBank's Chief Risk Officer, John Doe, was reviewing the bank's year-end
 fraud report when a number stopped her cold: $38.4 million. That was the total direct fraud loss for
 2024 — up 34% from the year before, and more than double what it had been three years earlier.
 The trend line was going in one direction only.
 Margaret pulled her team together for a three-day deep dive. What they found was not one problem
 but four, each feeding the others.
+
 Problem 1 — The Fraud Engine Is Losing
+
 NexaBank's fraud rate of 0.32% is more than four times the rate achieved by AI-powered banks
 operating at best practice (~0.08%). Card-not-present fraud, synthetic identity fraud, and account
 takeover attacks have all accelerated. The Falcon rule engine catches patterns it was explicitly
 programmed to detect — but modern fraudsters have learned to stay just below every threshold it
 monitors. The bank is fighting an adaptive enemy with a static weapon.
+
 Problem 2 — The Bank Is Blocking Its Own Customers
 Falcon flags 12% of all transactions as suspicious. Of those, 94% are completely legitimate. That
 means NexaBank is incorrectly declining nearly 4 million valid transactions every month — costing
 $7.2M in lost interchange revenue and, worse, destroying customer trust. Twenty-two percent of
 customers who experience a false decline close their account within 90 days. The fraud system has
 become a customer attrition engine.
+
 Problem 3 — Fraud Rings Are Invisible
 NexaBank's fraud team reviews 48,000 alerts every day, manually, with tools that show individual
 transactions but not the connections between them. In Q3 2024, a coordinated ring of 847 synthetic
@@ -48,10 +55,12 @@ accounts stole $4.2M over eight months before being discovered — and only beca
 member reported it. Every single account in that ring looked clean on its own. Only the pattern of
 shared devices, shared merchants, and shared money flows revealed the ring. NexaBank had no
 tool to see that pattern.
+
 The board was presented with the full picture in February 2025. Total annual fraud exposure —
 direct losses, false decline revenue foregone, investigation costs, and customer attrition — came to
 $161 million. The board approved an immediate strategic investment to build a next-generation AI
 fraud platform. NexaBank's transformation begins here.
+
 3. What NexaBank Is Thinking of Building
 NexaBank's technology leadership has identified a clear direction: replace the static, rule-based
 Falcon engine with an AI-powered platform that learns continuously, scores transactions in real
@@ -60,18 +69,19 @@ buying a vendor solution, the bank wants to build and own its core AI capability
 data and its trained models as proprietary competitive assets.
 At the centre of the proposed platform is a custom-trained Large Language Model (LLM) and an
 ensemble of ML models, working together across the full transaction lifecycle.
+
+
 The Custom LLM — What It Will Do
 The LLM is not a chatbot. It is an intelligent reasoning layer that sits on top of the numerical fraud
 scores produced by the ML models and performs three jobs that no scoring model alone can do:
-•
-•
+
 Interpret the score in context — the ML model returns a number. The LLM turns that number,
 combined with the customer's history, the merchant context, and the risk pattern, into a
 plain-English explanation that an investigator can read and act on in seconds.
 Handle ambiguous middle-ground cases — a score of 62 or 71 is genuinely uncertain. The LLM is
 trained to reason through the specific combination of signals and make a defensible decision
 recommendation, not just apply a threshold.
-•
+
 Compose real-time customer communications — when a transaction is declined or challenged, the
 LLM drafts the notification to the customer, tailored to the specific reason, in a tone appropriate to
 their customer tier and history.
@@ -85,6 +95,7 @@ LLM logs a one-line confidence note: "Low risk —
 velocity, device, and location all consistent with
 customer profile.
 " No investigator action required.
+
 31 – 50 Approve + Flag
 Transaction approved but tagged for post-transaction
 monitoring. LLM generates a soft-watch note for the
@@ -92,6 +103,7 @@ fraud queue: "Marginal elevation in velocity; consistent
 with prior travel pattern. Monitor next 3 transactions
 from this device.
 "
+
 51 – 70 Step-Up Auth
 Transaction held pending step-up authentication (SMS
 OTP or biometric). LLM drafts the customer message:
@@ -99,6 +111,7 @@ OTP or biometric). LLM drafts the customer message:
 your usual activity. Please confirm it's you.
 " If
 confirmed, approves and re-scores.
+
 71 – 85 Investigator Review
 Transaction queued for human investigator. LLM
 generates a structured case brief: transaction details,
@@ -107,6 +120,7 @@ customer relationship summary, and a
 recommendation (e.g.,
 "Likely ATO — device shared
 with 4 flagged accounts").
+
 86 – 100 Auto Decline
 Transaction declined immediately. LLM drafts the
 customer decline notification, the internal decline log
@@ -114,12 +128,12 @@ entry, and — if graph signals indicate a coordinated
 ring — triggers an alert to the fraud ring investigation
 team with a cluster summary.
 Other LLM Scenarios the Platform Will Handle
-•
+
 Dispute intake: Customer calls to dispute a charge. The LLM reads the transcript in real time,
 retrieves the transaction record and fraud score, and drafts a resolution recommendation for the
 agent before the call ends.
-•
-•
+
+
 Fraud ring briefing: When the graph detection engine flags a new cluster of suspicious accounts,
 the LLM synthesises the graph data into a two-paragraph brief that an investigator can forward
 directly to the fraud ring team or law enforcement liaison.
